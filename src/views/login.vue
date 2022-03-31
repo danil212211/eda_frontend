@@ -29,7 +29,7 @@
     import TInput from "../components/tInput";
     import TButton from "../components/tButton";
     export default {
-        name: "login",
+        name: "loginView",
         components: {TButton, TInput},
         data() {
             return {
@@ -54,6 +54,8 @@
                 var headers = {
                     "Access-Control-Allow-Origin": "*"
                 };
+                let rtr=
+                    this.$router;
                 this.axios
                     .get(this.backURL+"/login",data,headers)
                     .then(response => {
@@ -61,6 +63,9 @@
                         if (response.data.code===200) {
                             this.$cookies.set("hash",response.data.hash);
                             this.notLog=2;
+                            setTimeout(function () {
+                                rtr.push("/");
+                            },500);
                         } else {
                             this.notLog=1;
                         }

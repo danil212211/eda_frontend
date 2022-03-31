@@ -1,11 +1,11 @@
 <template>
     <b-container style="padding:0;" fluid >
         <b-row>
-            <carousel id="shopCard" :settings="shopSettings">
-                <slide class="shop-slide"  v-for="shop in shops"    >
-                    <a class="shop-slide-element">
+            <carousel   id="shopCard" :settings="shopSettings" :breakpoints="breakpoint">
+                <slide  class="shop-slide"  v-for="shop in this.shops" :key="shop.id"    >
+                    <router-link :to="'/shop/'+shop.id" class="shop-slide-element">
                         <b-img class="img-card" style="height:100%; width:100%" v-if="getImage(shop.logo_src)!==undefined" :src="getImage(shop.logo_src)"></b-img>
-                    </a>
+                    </router-link>
                 </slide>
                 <template #addons>
                     <navigation />
@@ -22,7 +22,6 @@
     import 'vue3-carousel/dist/carousel.css';
     import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
     import ShopCard from "../components/shopCard";
-
     export default {
         name : "shopCard",
         components : {
@@ -33,19 +32,29 @@
             Navigation
         },
         data() {
-            return {
-                shop : {},
-                shops: {},
-                shopSettings : {
-                    itemsToShow: 5,
-                    itemsToScroll : 3,
-                    transition : 1000,
-                    mouseDrag: false,
-                    touchDrag: false,
 
-                    snapAlign : 'center'
+            return {
+                breakpoint: {
+                    600: {
+                        itemsToShow: 3,
+                        snapAlign: 'center'
+                    },
+                    900: {
+                        itemsToShow: 5,
+                        snapAlign: 'center'
+                    }
+                  },
+                    shops: [],
+                    shopSettings: {
+                        itemsToShow: 2,
+                        itemsToScroll: 3,
+                        transition: 1000,
+                        mouseDrag: false,
+                        touchDrag: false,
+                        snapAlign: 'center'
+                    }
                 }
-            }
+
         },
         methods : {
             getImage(image) {
@@ -58,7 +67,7 @@
             getShops() {
                 let data = {
                     params: {
-                        id:10
+                        toId:100
                     }
 
                 };
@@ -89,7 +98,6 @@
     .shop-slide-element{
 
         height: 126px;
-        width: 100%;
         background-color: #F33965;
         font-size: 20px;
         border-radius: 26px;

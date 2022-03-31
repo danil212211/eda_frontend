@@ -1,10 +1,10 @@
 <template>
     <b-container style="padding: 0" fluid >
         <b-row>
-            <carousel id="discountCard" :settings="shopSettings">
+            <carousel id="discountCard" :breakpoints="breakpoint" :settings="shopSettings">
                 <slide class="discount-slide"  v-for="discount in discounts"   >
                     <div class="discount-slide-element" >
-                        Скидка - {{discount.id}}
+                        <b-img class="img-discount" :src="getImage(discount.img_src)"></b-img>
                     </div>
                 </slide>
                 <template #addons>
@@ -34,41 +34,75 @@
         },
         data() {
             return {
+                breakpoint: {
+                    600: {
+                        itemsToShow: 3,
+                        snapAlign: 'center'
+                    },
+                    900: {
+                        itemsToShow: 6,
+                        snapAlign: 'center'
+                    }
+                },
                 discounts: {},
                 shopSettings : {
-                    itemsToShow: 6,
+                    itemsToShow: 2,
                     transition : 700,
                     itemsToScroll : 3,
-                    snapAlign : 'center'
+                    snapAlign : 'center',
+
                 }
             }
         },
         methods : {
+            getImage(image) {
+                try {
+                    return require(`@/${image}.png`);
+                } catch(e) {
+                    return undefined;
+                }
+            },
             getDiscounts() {
                 this.discounts=  [
                     {
-                        id :1
+                        id :1,
+                        img_src : "assets/discounts/1"
                     },
                     {
-                        id :2
+                        id :2,
+                        img_src : "assets/discounts/2"
                     },
                     {
-                        id :3
+                        id :3,
+                        img_src : "assets/discounts/3"
                     },
                     {
-                        id :4
+                        id :4,
+                        img_src : "assets/discounts/4"
                     },
                     {
-                        id :5
+                        id :5,
+                        img_src : "assets/discounts/5"
                     },
                     {
-                        id :6
+                        id :6,
+                        img_src : "assets/discounts/6"
                     },
                     {
-                        id :7
+                        id :7,
+                        img_src : "assets/discounts/7"
                     },
                     {
-                        id: 8
+                        id: 8,
+                        img_src : "assets/discounts/8"
+                    },
+                    {
+                        id: 9,
+                        img_src : "assets/discounts/9"
+                    },
+                    {
+                        id: 10,
+                        img_src : "assets/discounts/10"
                     }
                 ];
             }
@@ -89,7 +123,6 @@
     }
     .discount-slide-element{
         height: 161px;
-        width:100%;
         background-color: #F33965;
         font-size: 20px;
         border-radius: 26px;
@@ -116,5 +149,11 @@
     }
     #discountCard .carousel__icon{
         fill:black;
+    }
+    .img-discount{
+        border-radius: 20px;
+        width:100%;
+        height:100%;
+        object-fit:cover;
     }
 </style>

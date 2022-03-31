@@ -11,7 +11,7 @@
 <style scoped>
     @font-face {
         font-family: "Segoe-UI-Semibold";
-        src: local("Segoe-UI-Semibold"),   url("../assets/fonts/Segoe-UI-Semibold.ttf") format("truetype");
+        src: local("Segoe-UI-Semibold"),   url("@/assets/fonts/Segoe-UI-Semibold.ttf") format("truetype");
     }
     h {
         font-family: Segoe-UI-Semibold;

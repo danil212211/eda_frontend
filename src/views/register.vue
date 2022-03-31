@@ -31,7 +31,7 @@
     import TInput from "../components/tInput";
     import TButton from "../components/tButton";
     export default {
-        name: "register",
+        name: "registerView",
         components: {TButton, TInput},
         data() {
             return {

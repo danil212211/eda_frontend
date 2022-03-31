@@ -12,7 +12,7 @@
 
     @font-face {
         font-family: "Gilroy-ExtraBold";
-        src: local("Gilroy-ExtraBold"),   url("../assets/fonts/Gilroy-ExtraBold.ttf") format("truetype");
+        src: local("Gilroy-ExtraBold"),   url("@/assets/fonts/Gilroy-ExtraBold.ttf") format("truetype");
     }
     div {
         font-family: Gilroy-ExtraBold;

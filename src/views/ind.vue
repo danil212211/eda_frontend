@@ -1,5 +1,5 @@
 <template>
-    <div class="body">
+    <div>
     <t-navbar class="nav"></t-navbar>
     <b-container >
         <t-header>Магазины возле вас</t-header>
@@ -14,18 +14,15 @@
 
 <script>
     export default  {
-        name : "ind"
+        name : "indexView"
     }
 </script>
 
-<style >
+<style scoped>
 .nav {
     margin-top:10px;
     margin-bottom:10px;
 }
-html,
-.body {
-    background-color: #e5e5e5;
-}
+
 
 </style>

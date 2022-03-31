@@ -1,21 +1,29 @@
 <template>
     <b-container fluid>
+        <div class="btn-custom">
         <input placeholder="Найти еду"  class="txt-input">
-        <button class="btn-input"><t-text style="text-align: center">Поиск</t-text></button>
+            <div class="btn-input">Поиск</div>
+        </div>
     </b-container>
 </template>
 
 <script>
+    import SubheaderText from "./subheaderText";
     export default {
-        name: "searchBar"
+        name: "searchBar",
+        components: {SubheaderText}
     }
 </script>
 
 <style scoped>
+    .btn-custom{
+        line-height: 40px;
+    }
     .txt-input{
+        display: inline-block;
+        padding-left: 20px;
         width:70%;
-        height: 100%;
-        min-height:40px;
+        height:40px;
         border-radius: 10px;
         border-bottom-right-radius: 0;
         border-top-right-radius: 0;
@@ -23,7 +31,7 @@
         outline: none;
         font-family: Segoe-UI;
         background-image: url('~@/assets/searchico.svg');
-        background-size: 15% auto;
+        background-size: auto auto;
         background-position: left center;
         background-position-x: 5px;
         text-indent: 17%;
@@ -33,15 +41,19 @@
         outline:none;
     }
     .btn-input{
+        display: inline-block;
+        padding: 0;
         width:30%;
         height: 100%;
-        min-height: 40px;
+        font-size: 1rem;
         border-radius:10px;
         border-bottom-left-radius:0px;
         border-top-left-radius:0px;
         background-color: #F33965;
-
-        border: 2px solid #F33965;
+        font-family: Segoe-UI-Semibold;
+        text-align: center;
+        cursor:pointer;
+        border: 0px solid #F33965;
         outline:none;
 
         color:white;
